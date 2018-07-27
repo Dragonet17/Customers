@@ -32,6 +32,8 @@ namespace Customers.Infrastructure.Services {
             var customer = await _customerRepository.GetAsync (customerId);
             if (customer == null || customer.CustomerAddress == null)
                 throw new Exception ("Customer with this id does not exist");
+            if (customer.TelephoneNumber != phoneNumber && await ExistByPhoneNumberAsync (phoneNumber))
+                throw new Exception ("Phone number is already taken.");
             customer.Update (name, surname, phoneNumber);
             customer.CustomerAddress.Update (flatNumber, buildingNumber, street, city, zipCode);
         }
