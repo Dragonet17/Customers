@@ -3,9 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Customers.Infrastructure.Commands;
 using Customers.Infrastructure.Data;
 using Customers.Infrastructure.Extensions.ActionFilters;
 using Customers.Infrastructure.Extensions.AutomapperMappingProfiles;
+using Customers.Infrastructure.Repositories;
+using Customers.Infrastructure.Repositories.Interfaces;
+using Customers.Infrastructure.Services;
+using Customers.Infrastructure.Services.Interfaces;
+using Customers.Infrastructure.Validators.Customer;
+using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -34,6 +41,20 @@ namespace Customers.Api {
                 options.UseSqlServer (Configuration.GetConnectionString ("CompanyDatabase"),
                     b => b.MigrationsAssembly ("Customers.Api")));
             services.AddAutoMapper (x => x.AddProfile (new MappingProfiles ()));
+
+            #region Validations
+            services.AddTransient<IValidator<CreateCustomer>, CreateCustomerValidator> ();
+            services.AddTransient<IValidator<UpdateCustomer>, UpdateCustomerValidator> ();
+            #endregion
+
+            #region Repositories
+            services.AddScoped<ICustomerRepository, CustomerRepository> ();
+            services.AddScoped<ICustomerAddressRepository, CustomerAddressRepository> ();
+            #endregion
+
+            #region Services
+            services.AddScoped<ICustomerService, CustomerService> ();
+            #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

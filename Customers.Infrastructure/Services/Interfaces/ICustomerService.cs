@@ -6,7 +6,7 @@ namespace Customers.Infrastructure.Services.Interfaces {
         Task CreateAsync (string name, string surname, string phoneNumber,
             string flatNumber, string buildingNumber, string street, string city, string zipCode);
 
-        Task UpdateAsync (string name, string surname, string phoneNumber,
+        Task UpdateAsync (int customerId, string name, string surname, string phoneNumber,
             string flatNumber, string buildingNumber, string street, string city, string zipCode);
         Task DeleteAsync (int customerId);
     }

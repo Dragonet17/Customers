@@ -4,10 +4,10 @@ using Customers.Infrastructure.Domains;
 using Customers.Infrastructure.Repositories.Interfaces;
 
 namespace Customers.Infrastructure.Repositories {
-    public class AddressRepository : IAddressRepository {
+    public class CustomerAddressRepository : ICustomerAddressRepository {
         private readonly CompanyContext _context;
 
-        public AddressRepository (CompanyContext context) {
+        public CustomerAddressRepository (CompanyContext context) {
             _context = context;
         }
         public async Task DeleteAsync (CustomerAddress customerAddress) {
