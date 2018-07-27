@@ -9,7 +9,7 @@ namespace Customers.Api.Controllers {
     public class CustomersController : Controller {
         private readonly ICustomerService _customerService;
 
-        protected CustomersController (ICustomerService customerService) {
+        public CustomersController (ICustomerService customerService) {
             _customerService = customerService;
         }
 
@@ -45,7 +45,7 @@ namespace Customers.Api.Controllers {
         }
 
         [HttpDelete ("{id}")]
-        public async Task<IActionResult> UpdateCustomer (int id) {
+        public async Task<IActionResult> DeleteCustomer (int id) {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
             try {

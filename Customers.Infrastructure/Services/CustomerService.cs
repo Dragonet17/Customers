@@ -29,7 +29,7 @@ namespace Customers.Infrastructure.Services {
             await _customerRepository.GetByPhoneNumberAsync (phoneNumber, true) != null;
 
         public async Task UpdateAsync (int customerId, string name, string surname, string phoneNumber, string flatNumber, string buildingNumber, string street, string city, string zipCode) {
-            var customer = await _customerRepository.GetAsync (customerId);
+            var customer = await _customerRepository.GetWithAddressAsync (customerId);
             if (customer == null || customer.CustomerAddress == null)
                 throw new Exception ("Customer with this id does not exist");
             if (customer.TelephoneNumber != phoneNumber && await ExistByPhoneNumberAsync (phoneNumber))

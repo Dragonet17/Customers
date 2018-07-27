@@ -15,6 +15,8 @@ namespace Customers.Infrastructure.Validators.Customer {
                 .Matches (@"^[a-zA-ZàáąâäãåąčććęęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšśžÀÁÂÄÃÅĄČĆĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð'-]+(\s{1}[a-zA-ZàáąâäãåąčććęęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšśžÀÁÂÄÃÅĄČĆĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð'-]+)*$")
                 .WithMessage ("Surname should contain only letters with one space between words");
             RuleFor (reg => reg.TelephoneNumber)
+                .NotEmpty ()
+                .NotNull ()
                 .Matches (@"^\+(?:[0-9]●?){10,10}[0-9]$")
                 .WithMessage ("Phone number is invalid.");
             RuleFor (reg => reg.FlatNumber)
