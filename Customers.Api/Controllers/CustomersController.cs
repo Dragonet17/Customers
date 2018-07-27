@@ -23,11 +23,11 @@ namespace Customers.Api.Controllers {
             try {
                 await _customerService.CreateAsync (command.Name, command.Surname, command.TelephoneNumber, command.FlatNumber, command.BuildingNumber, command.Street, command.City, command.ZipCode);
                 return StatusCode (201);
-            } catch {
-                return BadRequest ("Something went wrong");
+            } catch (Exception e) {
+                return BadRequest (new { message = e.Message });
             }
             // catch  {
-            // return BadRequest (new { message = e.Message });
+            // return BadRequest ("Something went wrong");
             // }
         }
 
@@ -38,9 +38,9 @@ namespace Customers.Api.Controllers {
             try {
                 await _customerService.UpdateAsync (id, command.Name, command.Surname, command.TelephoneNumber, command.FlatNumber, command.BuildingNumber, command.Street, command.City, command.ZipCode);
                 return NoContent ();
-            } catch {
-                // return BadRequest (new { message = e.Message });
-                return BadRequest ("Something went wrong");
+            } catch (Exception e) {
+                return BadRequest (new { message = e.Message });
+                // return BadRequest ("Something went wrong");
             }
         }
 
@@ -51,9 +51,9 @@ namespace Customers.Api.Controllers {
             try {
                 await _customerService.DeleteAsync (id);
                 return NoContent ();
-            } catch {
-                // return BadRequest (new { message = e.Message });
-                return BadRequest ("Something went wrong");
+            } catch (Exception e) {
+                return BadRequest (new { message = e.Message });
+                // return BadRequest ("Something went wrong");
             }
         }
     }

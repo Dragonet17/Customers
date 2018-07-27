@@ -36,10 +36,11 @@ namespace Customers.Infrastructure.Services {
                 throw new Exception ("Phone number is already taken.");
             customer.Update (name, surname, phoneNumber);
             customer.CustomerAddress.Update (flatNumber, buildingNumber, street, city, zipCode);
+            await _customerRepository.UpdateAsync (customer);
         }
         public async Task DeleteAsync (int customerId) {
             var customer = await _customerRepository.GetAsync (customerId);
-            if (customer == null || customer.CustomerAddress == null)
+            if (customer == null)
                 throw new Exception ("Customer with this id does not exist");
             // await _customerAddressRepository.DeleteAsync (customer.CustomerAddress);
             await _customerRepository.DeleteAsync (customer);
