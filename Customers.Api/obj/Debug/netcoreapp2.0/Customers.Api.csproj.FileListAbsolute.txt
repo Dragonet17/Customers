@@ -1,0 +1,13 @@
+C:\Users\Dragonet\Projects\Customers\Customers.Api\bin\Debug\netcoreapp2.0\Customers.Api.deps.json
+C:\Users\Dragonet\Projects\Customers\Customers.Api\bin\Debug\netcoreapp2.0\Customers.Api.runtimeconfig.json
+C:\Users\Dragonet\Projects\Customers\Customers.Api\bin\Debug\netcoreapp2.0\Customers.Api.runtimeconfig.dev.json
+C:\Users\Dragonet\Projects\Customers\Customers.Api\bin\Debug\netcoreapp2.0\Customers.Api.dll
+C:\Users\Dragonet\Projects\Customers\Customers.Api\bin\Debug\netcoreapp2.0\Customers.Api.pdb
+C:\Users\Dragonet\Projects\Customers\Customers.Api\bin\Debug\netcoreapp2.0\Customers.Infrastructure.dll
+C:\Users\Dragonet\Projects\Customers\Customers.Api\bin\Debug\netcoreapp2.0\Customers.Infrastructure.pdb
+C:\Users\Dragonet\Projects\Customers\Customers.Api\obj\Debug\netcoreapp2.0\Customers.Api.csprojResolveAssemblyReference.cache
+C:\Users\Dragonet\Projects\Customers\Customers.Api\obj\Debug\netcoreapp2.0\Customers.Api.csproj.CoreCompileInputs.cache
+C:\Users\Dragonet\Projects\Customers\Customers.Api\obj\Debug\netcoreapp2.0\Customers.Api.AssemblyInfoInputs.cache
+C:\Users\Dragonet\Projects\Customers\Customers.Api\obj\Debug\netcoreapp2.0\Customers.Api.AssemblyInfo.cs
+C:\Users\Dragonet\Projects\Customers\Customers.Api\obj\Debug\netcoreapp2.0\Customers.Api.dll
+C:\Users\Dragonet\Projects\Customers\Customers.Api\obj\Debug\netcoreapp2.0\Customers.Api.pdb

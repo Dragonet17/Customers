@@ -1,0 +1,9 @@
+C:\Users\Dragonet\Projects\Customers\Customers.Infrastructure\bin\Debug\netstandard2.0\Customers.Infrastructure.deps.json
+C:\Users\Dragonet\Projects\Customers\Customers.Infrastructure\bin\Debug\netstandard2.0\Customers.Infrastructure.dll
+C:\Users\Dragonet\Projects\Customers\Customers.Infrastructure\bin\Debug\netstandard2.0\Customers.Infrastructure.pdb
+C:\Users\Dragonet\Projects\Customers\Customers.Infrastructure\obj\Debug\netstandard2.0\Customers.Infrastructure.csprojResolveAssemblyReference.cache
+C:\Users\Dragonet\Projects\Customers\Customers.Infrastructure\obj\Debug\netstandard2.0\Customers.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\Dragonet\Projects\Customers\Customers.Infrastructure\obj\Debug\netstandard2.0\Customers.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\Dragonet\Projects\Customers\Customers.Infrastructure\obj\Debug\netstandard2.0\Customers.Infrastructure.AssemblyInfo.cs
+C:\Users\Dragonet\Projects\Customers\Customers.Infrastructure\obj\Debug\netstandard2.0\Customers.Infrastructure.dll
+C:\Users\Dragonet\Projects\Customers\Customers.Infrastructure\obj\Debug\netstandard2.0\Customers.Infrastructure.pdb

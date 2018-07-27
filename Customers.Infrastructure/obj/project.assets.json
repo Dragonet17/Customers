@@ -8772,11 +8772,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Dragonet\\Projects\\Comapny\\Customers.Infrastructure\\Customers.Infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\Dragonet\\Projects\\Customers\\Customers.Infrastructure\\Customers.Infrastructure.csproj",
       "projectName": "Customers.Infrastructure",
-      "projectPath": "C:\\Users\\Dragonet\\Projects\\Comapny\\Customers.Infrastructure\\Customers.Infrastructure.csproj",
+      "projectPath": "C:\\Users\\Dragonet\\Projects\\Customers\\Customers.Infrastructure\\Customers.Infrastructure.csproj",
       "packagesPath": "C:\\Users\\Dragonet\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Dragonet\\Projects\\Comapny\\Customers.Infrastructure\\obj\\",
+      "outputPath": "C:\\Users\\Dragonet\\Projects\\Customers\\Customers.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
