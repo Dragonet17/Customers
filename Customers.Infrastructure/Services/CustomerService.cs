@@ -1,7 +1,10 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Customers.Infrastructure.Domains;
+using Customers.Infrastructure.Dtos;
 using Customers.Infrastructure.Repositories.Interfaces;
 using Customers.Infrastructure.Services.Interfaces;
 
@@ -23,6 +26,25 @@ namespace Customers.Infrastructure.Services {
             var customer = new Customer (name, surname, phoneNumber);
             customer.AddAddress (new CustomerAddress (flatNumber, buildingNumber, street, city, zipCode));
             await _customerRepository.AddAsync (customer);
+        }
+
+        public async Task<CustomerWithAddressDto> GetAsync (int id) {
+            var customer = await _customerRepository.GetWithAddressAsync (id);
+            if (customer == null || customer.CustomerAddress == null)
+                throw new Exception ("Customer with this id does not exists");
+            return _mapper.Map<CustomerWithAddressDto> (customer);
+        }
+
+        public async Task<IEnumerable<CustomerWithAddressDto>> BrowseAsync (string query = null) {
+            var customersWithAddresses = await _customerRepository.GetAllWithAddresesAsync ();
+            if (!string.IsNullOrEmpty (query))
+                customersWithAddresses = customersWithAddresses.Where (a =>
+                    a.Name.ToLowerInvariant ().Contains (query.ToLowerInvariant ()) ||
+                    a.Surname.ToLowerInvariant ().Contains (query.ToLowerInvariant ()) ||
+                    a.TelephoneNumber.ToLowerInvariant ().Contains (query.ToLowerInvariant ()) ||
+                    a.CustomerAddress.Street.ToLowerInvariant ().Contains (query.ToLowerInvariant ()) ||
+                    a.CustomerAddress.City.ToLowerInvariant ().Contains (query.ToLowerInvariant ()));
+            return _mapper.Map<IEnumerable<CustomerWithAddressDto>> (customersWithAddresses);
         }
 
         public async Task<bool> ExistByPhoneNumberAsync (string phoneNumber) =>

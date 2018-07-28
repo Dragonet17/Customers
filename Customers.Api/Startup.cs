@@ -7,6 +7,7 @@ using Customers.Infrastructure.Commands;
 using Customers.Infrastructure.Data;
 using Customers.Infrastructure.Extensions.ActionFilters;
 using Customers.Infrastructure.Extensions.AutomapperMappingProfiles;
+using Customers.Infrastructure.Extensions.ErrorHandler;
 using Customers.Infrastructure.Repositories;
 using Customers.Infrastructure.Repositories.Interfaces;
 using Customers.Infrastructure.Services;
@@ -55,6 +56,7 @@ namespace Customers.Api {
             #region Services
             services.AddScoped<ICustomerService, CustomerService> ();
             #endregion
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -67,9 +69,9 @@ namespace Customers.Api {
                     serviceScope.ServiceProvider.GetService<CompanyContext> ().Database.Migrate ();
                 }
             }
+            app.UseErrorHandlerMiddleware ();
             app.UseCors (x => x.AllowAnyHeader ().AllowAnyMethod ().AllowAnyOrigin ().AllowCredentials ());
             app.UseAuthentication ();
-
             app.UseMvc ();
         }
     }

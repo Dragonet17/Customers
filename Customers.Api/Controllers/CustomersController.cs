@@ -13,48 +13,46 @@ namespace Customers.Api.Controllers {
             _customerService = customerService;
         }
 
-        [HttpPost ()]
+        [HttpGet ("{id}")]
+        public async Task<IActionResult> GetCustomer (int id) {
+            if (!ModelState.IsValid)
+                return BadRequest (ModelState);
+            return Json (await _customerService.GetAsync (id));
+        }
+
+        [HttpGet ("search")]
+        public async Task<IActionResult> BrowseCustomers ([FromQuery] string query) {
+            if (!ModelState.IsValid)
+                return BadRequest (ModelState);
+            return Json (await _customerService.BrowseAsync (query));
+        }
+
+        [HttpPost]
         public async Task<IActionResult> CreateCustomer ([FromBody] CreateCustomer command) {
             if (await _customerService.ExistByPhoneNumberAsync (command.TelephoneNumber))
                 ModelState.AddModelError ("PhoneNumber", "Phone number is already taken.");
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
 
-            try {
-                await _customerService.CreateAsync (command.Name, command.Surname, command.TelephoneNumber, command.FlatNumber, command.BuildingNumber, command.Street, command.City, command.ZipCode);
-                return StatusCode (201);
-            } catch (Exception e) {
-                return BadRequest (new { message = e.Message });
-            }
-            // catch  {
-            // return BadRequest ("Something went wrong");
-            // }
+            await _customerService.CreateAsync (command.Name, command.Surname, command.TelephoneNumber, command.FlatNumber, command.BuildingNumber, command.Street, command.City, command.ZipCode);
+            return StatusCode (201);
         }
 
         [HttpPut ("{id}")]
         public async Task<IActionResult> UpdateCustomer (int id, [FromBody] CreateCustomer command) {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
-            try {
-                await _customerService.UpdateAsync (id, command.Name, command.Surname, command.TelephoneNumber, command.FlatNumber, command.BuildingNumber, command.Street, command.City, command.ZipCode);
-                return NoContent ();
-            } catch (Exception e) {
-                return BadRequest (new { message = e.Message });
-                // return BadRequest ("Something went wrong");
-            }
+
+            await _customerService.UpdateAsync (id, command.Name, command.Surname, command.TelephoneNumber, command.FlatNumber, command.BuildingNumber, command.Street, command.City, command.ZipCode);
+            return NoContent ();
         }
 
         [HttpDelete ("{id}")]
         public async Task<IActionResult> DeleteCustomer (int id) {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
-            try {
-                await _customerService.DeleteAsync (id);
-                return NoContent ();
-            } catch (Exception e) {
-                return BadRequest (new { message = e.Message });
-                // return BadRequest ("Something went wrong");
-            }
+            await _customerService.DeleteAsync (id);
+            return NoContent ();
         }
     }
 }
